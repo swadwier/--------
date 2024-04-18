@@ -1,0 +1,185 @@
+<!-- <section>
+<h1>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders">
+  <rect x="3" y="3" width="7" height="7"></rect>
+  <rect x="14" y="3" width="7" height="7"></rect>
+  <rect x="14" y="14" width="7" height="7"></rect>
+  <rect x="3" y="14" width="7" height="7"></rect>
+</svg>
+Калькулятор расчета стоимости тиснения
+</h1>
+
+<fieldset class="nice-form-group">
+<legend>1. Выберете метод тиснения: </legend>
+<div class="nice-form-group">
+<input type="radio" name="r1" value="blint" id="r1" onclick="Operation()" checked/>
+<label for="r1">Блинт (слепое тиснение)</label>
+</div>
+
+<div class="nice-form-group">
+<input type="radio" name="r1" value="folga" id="r2" onclick="Operation()" checked/>
+<label for="r2">Фольга (тиснение фольгой)</label>
+</div>
+</fieldset>
+
+<fieldset class="nice-form-group">
+<legend>2. Выберите размер клише: </legend>
+<div class="nice-form-group">
+<input type="radio" name="r2" value="30klish" id="r4" onclick="Operation()" checked/>
+<label for="r3">Клише до 30кв.см</label>
+</div>
+
+<div class="nice-form-group">
+  <input type="radio" name="r2" value="50klish" id="r3" onclick="Operation()" />
+  <label for="r4">Клише до 50кв.см</label>
+</div>
+
+<div class="nice-form-group">
+<input type="radio" name="r2" value="noklish" id="r5" onclick="Operation()" />
+<label for="r5">Клише предоставляет заказчик</label>
+</div>
+</fieldset>
+
+<form action="" name="calc">
+  <div class="nice-form-group">
+  <label>3. Тираж </label>
+  <input name="ReadOut1" type="number" placeholder="Минимум 100 шт." id="editWide">
+  </div> 
+
+<div class="nice-form-group"> 
+<input name="btnCount" type="button" value="Провести расчет" onclick="Operation()"> -->
+<!-- <div class="btn-simple btn-small" name="btnCount" type="button"  onclick="Operation()">Рассчитать</div>
+</div>
+
+<div class="nice-form-group">
+<label>Цена за тираж:</label>
+<input type="text" name="rez" value="" />
+</div>
+<div class="nice-form-group">
+<label>Цена за единицу:</label>
+<input type="text" name="rez2" value="" />
+</div>
+</form> -->
+
+<!-- <script language="JavaScript">var Fcalc = document.calc;
+function floorN(x, n)
+{
+    var mult = Math.pow(10, n);
+    return Math.floor(x*mult)/mult;
+}
+function Operation () 
+{
+var Tir = Fcalc.ReadOut1.value;
+var Rez=0;
+var chosen = "";
+var chosen2 = "";
+len = Fcalc.r1.length;
+for (i = 0; i <len; i++) {
+if (Fcalc.r1[i].checked) {
+chosen = Fcalc.r1[i].value;
+}}
+
+len = Fcalc.r2.length;
+for (i = 0; i <len; i++) {
+if (Fcalc.r2[i].checked) {
+chosen2 = Fcalc.r2[i].value;
+}
+}
+if (chosen=="")
+{alert('Вы не выбрали материал')}
+if (chosen2=="")
+{alert('Вы не выбрали клише')}
+
+
+if (chosen2=="50klish")
+{Rez=Rez+1100}
+if (chosen2=="30klish")
+{Rez=Rez+800}
+if (chosen=="blint")
+{
+    if (Tir<=49)
+      {
+      Rez=Rez+Tir*62.5+650;
+      }
+      if (Tir>=50&& Tir<=99)
+      {
+      Rez=Rez+Tir*37.81+585;
+      }
+      if (Tir>=100 && Tir<=149)
+      {
+      Rez=Rez+Tir*14+552.5;
+      }
+      if (Tir>=150 && Tir<=199)
+      {
+      Rez=Rez+Tir*13.33+520;
+      }
+      if (Tir>=200 && Tir<=249)
+      {
+      Rez=Rez+Tir*12.35+487.5;
+      }
+      if (Tir>=250 && Tir<=299)
+      {
+      Rez=Rez+Tir*11.7+455;
+      }
+      if (Tir>=300 && Tir<=499)
+      {
+      Rez=Rez+Tir*10.89+422.5;
+      }
+      if (Tir>=500 && Tir<=999)
+      {
+      Rez=Rez+Tir*9.25+390;
+      }
+    if (Tir>=1000)
+      {
+      Rez=Rez+Tir*8.13+390;
+      }
+}
+
+if (chosen=="folga")
+{
+    if (Tir<=49)
+      {
+      Rez=Rez+Tir*67.5+650;
+      }
+      if (Tir>=50&& Tir<=99)
+      {
+      Rez=Rez+Tir*40.5+585;
+      }
+      if (Tir>=100 && Tir<=149)
+      {
+      Rez=Rez+Tir*16.25+552.5;
+      }
+      if (Tir>=150 && Tir<=199)
+      {
+      Rez=Rez+Tir*15.6+520;
+      }
+      if (Tir>=200 && Tir<=249)
+      {
+      Rez=Rez+Tir*15.11+487.5;
+      }
+      if (Tir>=250 && Tir<=299)
+      {
+      Rez=Rez+Tir*14+455;
+      }
+      if (Tir>=300 && Tir<=499)
+      {
+      Rez=Rez+Tir*12.83+422.5;
+      }
+      if (Tir>=500 && Tir<=999)
+      {
+      Rez=Rez+Tir*11.53+390;
+      }
+    if (Tir>=1000)
+      {
+      Rez=Rez+Tir*9.26+390;
+      }
+    
+}
+
+Fcalc.rez.value=floorN(Rez*1.5, 2);
+Fcalc.rez2.value=floorN((Rez*1.5/Tir),2);	  
+}
+</script>
+  </div>
+</div>
+</section> -->
