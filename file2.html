@@ -1,0 +1,172 @@
+<section>
+    <h1>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sliders">
+        <rect x="3" y="3" width="7" height="7"></rect>
+        <rect x="14" y="3" width="7" height="7"></rect>
+        <rect x="14" y="14" width="7" height="7"></rect>
+        <rect x="3" y="14" width="7" height="7"></rect>
+      </svg>
+      Калькулятор расчета тампопечати
+    </h1>
+  <form action="https://pr-gifts.ru/pechat_logotipa/tampopechat/" name="calc">
+  <div class="nice-form-group">
+  <label>1. Тираж </label>
+  <input name="ReadOut1" type="number" placeholder="Минимум 100 шт." id="editWide">
+  </div> 
+
+
+ <div class="nice-form-group">
+ <label>2. Количество цветов </label>  
+  <select name="ReadOut2">
+    <option>Выберите количество цветов печати</option>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+
+
+<fieldset class="nice-form-group">
+  <legend>3. Сроки печати</legend>
+  <div class="nice-form-group">
+    <input type="radio" name="srok" value="1" id="standart" onclick="Operation()" checked="">
+    <label for="standart">Стандартный 5-7 дней</label>
+  </div>
+  <div class="nice-form-group">
+    <input type="radio" name="srok" value="1.25" id="4day" onclick="Operation()">
+    <label for="3day">За 4 дня (+25%)</label>
+  </div>
+  <div class="nice-form-group">
+    <input type="radio" name="srok" value="1.5" id="3day" onclick="Operation()">
+    <label for="1day">За 3 дня (+50%)</label>
+  </div>
+  <div class="nice-form-group">
+    <input type="radio" name="srok" value="1.75" id="2day" onclick="Operation()">
+    <label for="3day">За 2 дня (+75%)</label>
+  </div>
+</fieldset>
+
+
+ <fieldset class="nice-form-group">
+  <legend>4. Дополнительные параметры</legend>
+ <div class="nice-form-group">         
+ <input name="metal" type="checkbox" id="metal" class="switch" onclick="Operation()"> 
+ <label for="metal">Нанесение на металл
+  <small>Включите для расчета печати на металлических изделиях</small>
+ </label>
+ </div>     
+
+ <div class="nice-form-group">         
+  <input name="alien" type="checkbox" id="alien" class="switch" onclick="Operation()"> 
+  <label for="alien">Товар не из каталога PR Gifts
+   <small>Включите для расчета печати на своих товарах</small>
+  </label>
+  </div>   
+</fieldset> 
+
+<div class="nice-form-group"> 
+  <div class="btn-simple btn-small" name="btnCount" type="button" onclick="Operation()">Рассчитать</div>
+  </div>
+
+<div class="nice-form-group">
+  <label>Цена за тираж:</label>
+  <input type="text" name="rez" value="">
+</div>
+<div class="nice-form-group">
+  <label>Цена за единицу:</label>
+  <input type="text" name="rez2" value="">
+</div>
+    </form>
+
+<script language="JavaScript">function floorN(x, n)
+{
+  var mult = Math.pow(10, n);
+  return Math.floor(x*mult)/mult;
+}
+var Fcalc = document.calc;
+var Currentst = 0;
+var Currentsk = 0;
+var PendingOp = "";
+var Flag1 = 0;
+var Flag2 = 0;
+// кнопки действия
+function Operation () 
+{
+var Tir = Fcalc.ReadOut1.value;
+var Kolor = Fcalc.ReadOut2.value;
+var koefsrok = Fcalc.srok.value;
+var Rez;
+    if (Tir<100)
+    {
+    alert("Минимальный тираж заказа для расчета = 100 шт.");
+    }
+   if (Tir>=100 && Tir<=199)
+  {
+  Rez=Tir*22.5;
+  }
+  if (Tir>=200 && Tir<=299)
+  {
+  Rez=Tir*13;
+  }
+  if (Tir>=300&& Tir<=499)
+  {
+  Rez=Tir*10.5;
+  }
+  if (Tir>=500 && Tir<=699)
+  {
+  Rez=Tir*7.5;
+  }
+  if (Tir>=700 && Tir<=999)
+  {
+  Rez=Tir*6.83;
+  }
+  if (Tir>=1000 && Tir<=1999)
+  {
+  Rez=Tir*5.3;
+  }
+  if (Tir>=2000 && Tir<=2999)
+  {
+  Rez=Tir*4.65;
+  }
+  if (Tir>=3000 && Tir<=3999)
+  {
+  Rez=Tir*4.6;
+  }
+  if (Tir>=4000 && Tir<=4999)
+  {
+  Rez=Tir*4.58;
+  }
+  if (Tir>=5000)
+  {
+  Rez=Tir*4.56;
+  }
+if (Kolor == 2)
+{
+  Rez=Rez*1.5;
+}
+if (Kolor == 3)
+{
+  Rez=Rez*2.2;
+}
+if (Kolor == 4)
+{
+  Rez=Rez*2.7;
+}
+if (Fcalc.metal.checked)
+{
+Rez=Rez+(Tir*6);
+}
+if (Fcalc.alien.checked)
+{
+Rez=Rez*1.5; 
+} 
+Fcalc.rez.value=floorN(Rez*koefsrok, 2);
+Fcalc.rez2.value=floorN((Rez/Tir*koefsrok),2);
+function ClearEntry () 
+{
+Fcalc.ReadOut.value = "80";		
+}
+}
+</script>
+</section>
